@@ -168,7 +168,7 @@ php artisan make:model Nome -rcms --requests
 
 #creo form request per validazione
 	
-php artisan make:request StoreMomemodelRequest
+php artisan make:request StoreNOMEMODELRequest
 
 
 ```
