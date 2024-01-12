@@ -22,7 +22,7 @@
 <body>
     <div id="app">
         @include('partials.header')
-        <main class="">
+        <main class="w-100" style="background-color: #1a1b41; height: calc(100vh - 100px)">
             @yield('content')
         </main>
     </div>

@@ -1,5 +1,5 @@
 <header class="bg-dark py-2 text-white" style="height: 100px;">
-    <div class="d-flex justify-content-between align-items-center">
+    <div class="d-flex justify-content-between px-3 align-items-center">
         <div>
             <img class="rounded-circle d-none d-md-block" style="height: 80px; width: 80px;" src="{{ asset('img/logo.png') }}" alt="logo">
         </div>
@@ -9,7 +9,7 @@
                 <button class="btn btn-success">Search</button>
             </form>
         </div>
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto d-flex justify-content-between flex-row gap-3">
             <!-- Authentication Links -->
             @guest
                 <li class="nav-item">

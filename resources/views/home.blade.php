@@ -1,7 +1,8 @@
 @extends('layouts.app')
 @section('content')
-    <section class="container">
-        <h1>Section title</h1>
-        <p>section content</p>
+    <section>
+        <div class="container py-3">
+            <h1 class="text-white">Home</h1>
+        </div>
     </section>
 @endsection
