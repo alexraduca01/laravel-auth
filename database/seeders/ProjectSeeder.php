@@ -20,6 +20,7 @@ class ProjectSeeder extends Seeder
             $newProject->title = $project['title'];
             $newProject->image = $project['image'];
             $newProject->body = $project['body'];
+            $newProject->url = $project['url'];
             $newProject->slug = STR::slug($project['title'], '-');
             $newProject->user_id = 1;
             $newProject->save();
