@@ -1,7 +1,12 @@
 <header class="bg-dark py-2 text-white" style="height: 100px;">
     <div class="d-flex justify-content-between px-3 align-items-center">
-        <div>
-            <img class="rounded-circle d-none d-md-block" style="height: 80px; width: 80px;" src="{{ asset('img/logo.png') }}" alt="logo">
+        <div class="d-flex align-items-center gap-3">
+            <img class="rounded-circle d-none d-md-flex" style="height: 80px; width: 80px;" src="{{ asset('img/logo.png') }}" alt="logo">
+            @guest
+
+                @else
+                    <a href="{{ route('admin.projects.create') }}" class="btn btn-primary">Add Project</a>
+            @endguest
         </div>
         <div>
             <form action="" class="d-flex gap-2">
@@ -10,7 +15,6 @@
             </form>
         </div>
         <ul class="navbar-nav ml-auto d-flex justify-content-between flex-row gap-3">
-            <!-- Authentication Links -->
             @guest
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
