@@ -31,7 +31,7 @@
                                 @foreach ($projects as $item)
                                     <tr>
                                         <td>#{{ $item->id }}</td>
-                                        <td>{{ $item->title }}</td>
+                                        <td><a class="text-white text-decoration-none " href="{{ route('admin.projects.show', $item->slug) }}">{{ $item->title }}</a></td>
                                         <td>{{ $item->body }}</td>
                                         <td>{{ $item->url }}</td>
                                         <td>
