@@ -53,7 +53,7 @@ class ProjectController extends Controller
         }
         $newProject = Project::create($formData);
 
-        return redirect()->route('admin.projects.show', $newProject->id);
+        return redirect()->route('admin.projects.show', $newProject->slug);
     }
 
     /**
@@ -78,10 +78,9 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
         $formData = $request->validated();
-
-        // Create slug
-        $slug = Str::slug($formData['title'], '-');
-
+        if ($project->title !== $formData['title']) {
+            $slug = Str::slug($formData['title']);
+        }
         // add slug to formData
         $formData['slug'] = $slug;
 
@@ -98,7 +97,7 @@ class ProjectController extends Controller
 
         $project->update($formData);
 
-        return redirect()->route('admin.projects.show', $project->id);
+        return redirect()->route('admin.projects.show', $project->slug);
     }
 
     /**
@@ -109,7 +108,7 @@ class ProjectController extends Controller
         if ($project->image){
             Storage::delete($project->image);
         }
-        
+
         $project->delete();
         return to_route('admin.projects.index')->with('message', 'Project deleted successfully');
     }

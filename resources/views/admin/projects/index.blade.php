@@ -10,14 +10,8 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ $item->title }}</h5>
                             <p class="card-text">{{ substr($item->body,0,30)."..." }}</p>
-                            <div class="d-flex justify-content-between">
-                                <a href="{{ route('admin.projects.show', $item->id) }}" class="btn btn-primary">More</a>
-                                <a href="{{ route('admin.projects.edit', $item->id) }}" class="btn btn-success"><i class="fa-solid fa-pen"></i></a>
-                                <form action="{{route('admin.projects.destroy', $item->id)}}" method="POST" class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="delete-button btn btn-danger" data-item-title="{{ $item->title }}"><i class="fa-solid fa-trash-can"></i></button>
-                                </form>
+                            <div class="d-flex justify-content-center">
+                                <a href="{{ route('admin.projects.show', $item->slug) }}" class="btn btn-primary">More</a>
                             </div>
                         </div>
                     </div>

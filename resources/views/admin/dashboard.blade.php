@@ -35,8 +35,8 @@
                                         <td>{{ $item->body }}</td>
                                         <td>{{ $item->url }}</td>
                                         <td>
-                                            <a href="{{ route('admin.projects.edit', $item->id) }}" class="btn btn-success"><i class="fa-solid fa-pen"></i></a>
-                                            <form action="{{route('admin.projects.destroy', $item->id)}}" method="POST" class="d-inline">
+                                            <a href="{{ route('admin.projects.edit', $item->slug) }}" class="btn btn-success"><i class="fa-solid fa-pen"></i></a>
+                                            <form action="{{route('admin.projects.destroy', $item->slug)}}" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="delete-button btn btn-danger" data-item-title="{{ $item->title }}"><i class="fa-solid fa-trash-can"></i></button>
@@ -52,4 +52,5 @@
         </div>
     </div>
 </div>
+@include('partials.modal_delete')
 @endsection
