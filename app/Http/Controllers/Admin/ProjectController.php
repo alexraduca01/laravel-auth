@@ -89,6 +89,9 @@ class ProjectController extends Controller
         $formData['user_id'] = $project->user_id;
 
         if ($request->hasFile('image')){
+            if ($project->image){
+                Storage::delete($project->image);
+            }
             $path = Storage::put('images', $request->image);
             $formData['image'] = $path;
         }
@@ -103,6 +106,10 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        if ($project->image){
+            Storage::delete($project->image);
+        }
+        
         $project->delete();
         return to_route('admin.projects.index')->with('message', 'Project deleted successfully');
     }

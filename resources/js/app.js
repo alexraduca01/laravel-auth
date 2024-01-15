@@ -3,6 +3,7 @@ import "~resources/scss/app.scss";
 import * as bootstrap from "bootstrap";
 import.meta.glob(["../img/**", "../fonts/**"]);
 
+// funzione per aprire una conferma della cancellazione di un file
 
 const buttons = document.querySelectorAll('.delete-button');
 // console.log(buttons);
@@ -36,6 +37,18 @@ buttons.forEach((button) => {
         // faccio cancellare l'elemento dall'utente
         buttonDelete.addEventListener('click', (event) => {
             button.parentElement.submit();
-        })
-    })
-})
+        });
+    });
+});
+
+// funzione per mostrare la preview dell'immagine caricata dall'utente
+const previewImage = document.getElementById("image");
+    previewImage.addEventListener("change", (event) => {
+        var oFReader = new FileReader();
+
+        oFReader.readAsDataURL(previewImage.files[0]);
+
+        oFReader.onload = function (oFREvent) {
+            document.getElementById("uploadPreview").src = oFREvent.target.result;
+        };
+});

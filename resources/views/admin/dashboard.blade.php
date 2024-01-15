@@ -20,6 +20,7 @@
                         <table class="table table-dark table-striped">
                             <thead>
                                 <tr>
+                                    <th>ID</th>
                                     <th>Name</th>
                                     <th>Description</th>
                                     <th>Git</th>
@@ -29,6 +30,7 @@
                             <tbody>
                                 @foreach ($projects as $item)
                                     <tr>
+                                        <td>#{{ $item->id }}</td>
                                         <td>{{ $item->title }}</td>
                                         <td>{{ $item->body }}</td>
                                         <td>{{ $item->url }}</td>
