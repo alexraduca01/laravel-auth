@@ -8,7 +8,7 @@
     <div class="row justify-content-center">
         <div class="col">
             <div class="card">
-                <div class="card-header">{{ __('User Dashboard') }}</div>
+                <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -16,8 +16,35 @@
                         {{ session('status') }}
                     </div>
                     @endif
-
-                    <a href="{{ route('admin.projects.index') }}" class="btn btn-primary">Esplora !</a>
+                    <div>
+                        <table class="table table-dark table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                    <th>Git</th>
+                                    <th>Settings</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($projects as $item)
+                                    <tr>
+                                        <td>{{ $item->title }}</td>
+                                        <td>{{ $item->body }}</td>
+                                        <td>{{ $item->url }}</td>
+                                        <td>
+                                            <a href="{{ route('admin.projects.edit', $item->id) }}" class="btn btn-success"><i class="fa-solid fa-pen"></i></a>
+                                            <form action="{{route('admin.projects.destroy', $item->id)}}" method="POST" class="d-inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="delete-button btn btn-danger" data-item-title="{{ $item->title }}"><i class="fa-solid fa-trash-can"></i></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

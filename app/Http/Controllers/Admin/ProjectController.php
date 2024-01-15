@@ -88,6 +88,11 @@ class ProjectController extends Controller
         // add owners id to formData
         $formData['user_id'] = $project->user_id;
 
+        if ($request->hasFile('image')){
+            $path = Storage::put('images', $request->image);
+            $formData['image'] = $path;
+        }
+
         $project->update($formData);
 
         return redirect()->route('admin.projects.show', $project->id);

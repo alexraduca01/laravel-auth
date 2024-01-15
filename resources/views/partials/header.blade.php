@@ -5,7 +5,7 @@
             @guest
 
                 @else
-                    <a href="{{ route('home') }}" class="btn btn-primary">Home</a>
+                    <a href="{{ route('admin.projects.index') }}" class="btn btn-primary">Index</a>
                     <a href="{{ route('admin.projects.create') }}" class="btn btn-primary">Add Project</a>
             @endguest
         </div>
