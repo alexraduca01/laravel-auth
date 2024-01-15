@@ -170,6 +170,7 @@ php artisan make:model Nome -rcms --requests
 	
 php artisan make:request StoreNOMEMODELRequest
 
+php artisan storage:link
 
 ```
 ## Auth

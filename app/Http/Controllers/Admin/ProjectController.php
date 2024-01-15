@@ -7,6 +7,7 @@ use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -46,6 +47,10 @@ class ProjectController extends Controller
         // add userId to formData
         $formData['user_id'] = $userId;
 
+        if ($request->hasFile('image')){
+            $path = Storage::put('images', $request->image);
+            $formData['image'] = $path;
+        }
         $newProject = Project::create($formData);
 
         return redirect()->route('admin.projects.show', $newProject->id);

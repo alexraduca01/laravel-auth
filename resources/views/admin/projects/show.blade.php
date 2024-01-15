@@ -3,6 +3,7 @@
     <section class="container text-white">
         <h1>{{ $project->title }}</h1>
         <p>{{ $project->body }}</p>
+        <img src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->title }}">
         <a href="{{ route('admin.projects.index') }}" class="btn btn-primary"><i class="fa-solid fa-arrow-left"></i></a>
         <div class="d-flex justify-content-end align-items-center gap-3">
             <a href="{{ $project->url }}" class="text-white fs-2"><i class="fa-brands fa-github"></i></a>

@@ -2,7 +2,7 @@
 @section('content')
     <section class="container py-2 text-white">
         <h1>EDIT {{ $project->title }}</h1>
-        <form action="{{ route('admin.projects.update', $project->id) }}" method="POST">
+        <form action="{{ route('admin.projects.update', $project->id) }}" enctype="multipart/form-data" method="POST">
             @csrf
             @method('PUT')
             <div class="mb-3">
@@ -21,7 +21,7 @@
             </div>
             <div class="mb-3">
                 <label for="image" class="fs-2">Image</label>
-                <input type="url" class="form-control @error('image') is-invalid @enderror" value="{{ old('image', $project->image) }}" name='image' id='image'>
+                <input type="file" class="form-control @error('image') is-invalid @enderror" value="{{ old('image', $project->image) }}" name='image' id='image'>
                 @error('image')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
